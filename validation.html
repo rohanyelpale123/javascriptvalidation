@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>validation form</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background: url("img//im1.avif");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-attachment: fixed;
+
+		}
+		.box{
+			align-items: center;
+			height: 90vh;
+			width: 35%;
+			background: rgba(0, 0, 0, .8);
+			border-radius: 20px;
+			margin: 30px auto;
+			align-items: center;
+			padding:5px 0 0 32px;
+			box-shadow: 0 0 10px 1px red;
+		}
+		label,input{
+			display: inlineblock;
+			margin-top: 5px;
+		}
+		form{
+			width: 90%;
+			height: 90vh;
+			/*padding: 100px 0 0 25%;*/
+		}
+		fieldset{
+			height: 80vh;
+			/*padding-left: 100px;*/
+			padding: 20px 20px 0 20px;
+			border-radius: 5px;
+		}
+		legend{
+			text-align: center;
+			color: wheat;
+			font-size: 30px;
+			font-weight: 800;
+		}
+		label{
+			font-size: 18px;
+			font-weight: 500;
+			color: white;
+		}
+		input{
+			width: 100%;
+			background: transparent;
+			color: grey;
+			font-size: 16px;
+			font-weight: 300;
+			/*border: none;*/
+			height: 27px;
+
+		}
+		textarea{
+			background: transparent;
+			border:2px inset gray;
+			font-size: 16px;
+			font-weight: 300;
+			width: 100%;
+		}
+		.btn{
+			background: transparent;
+			padding: 0px 30px;
+			border: 3px outset blue;
+			border-radius: 10px;
+			color: white;
+			letter-spacing: 2px;
+			font-weight: 800;
+			height: 30px;
+			padding-bottom: 5px;
+
+		}
+		.btn:hover{
+			background: blue;
+			box-shadow: 0 0 9px 2px blue;
+			transition: .5s;
+			color: black;
+			font-weight: 800;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<form action="#" onsubmit="input()">
+			<fieldset>
+				<legend> Registration Form</legend>
+
+				<label>Name :</label>
+				<input type="text" name="" id="userNm" onkeyup="inputName()" placeholder="Enter Name Here" autocomplete="of" class="form-control">
+				<small style="color: red;" id="user"></small>
+				<label>EmailId :</label>
+				<input type="text" name="" onblur="inputemail()" id="email" placeholder="Enter emailId Here">
+				<small style="color:red;" id="Email"></small>
+				<label>password :</label>
+				<input type="text" name="" onblur="inputpassword()" id="password" placeholder="Enter password Here..">
+				<small style="color:red" id="pass"></small><br>
+				<label>Mobile No :</label>
+				<input type="text" name="" minlength="10" maxlength="10" onkeypress="inputmobile()" id="mobile" placeholder="Enter mobile number Here..">
+				<small style="color:red" id="Mobile"></small><br>
+				<label style="margin-top: 8px;">Address :</label>
+				<textarea style="margin-top:8px" placeholder="enter your address.."></textarea><br>
+				<small style="color:red" id="address"></small><br>
+				<input class="btn" type="submit" name="" >
+				<!-- <button >Submit</button> -->
+				
+			</fieldset>
+			
+		</form>
+	</div>
+		<script type="text/javascript">
+			function input() {
+				var userNm=document.getElementById('userNm').value;
+				var userpassword=document.getElementById('password').value;
+				var userEmail=document.getElementById('email').value;
+				var userMobile=document.getElementById('mobile').value;
+				var userAddress=document.getElementById('address').value;
+			    
+                    
+                    if (userNm=="" || userpassword=="" || userEmail=="" || userMobile==""|| userAddress=="") {
+                    	document.getElementById("user").innerHTML="please enter valid delait..";
+                    	document.getElementById("Email").innerHTML="please enter valid delait..";
+                    	document.getElementById("pass").innerHTML="please enter valid delait..";
+                    	document.getElementById("Mobile").innerHTML="please enter valid delait..";
+                    	document.getElementById("address").innerHTML="please enter valid delait..";
+                    }
+
+			}
+			function inputName(){
+				var userNm=document.getElementById('userNm').value;
+                var onlychar=/^([a-zA-Z]+\s)*[a-zA-Z]+$/;
+
+                if (!(userNm.match(onlychar))) {
+                     document.getElementById('user').innerHTML="enter only character here..";
+                }
+                else{
+                	document.getElementById('user').innerHTML="";
+                }
+               } 
+              
+
+
+               function inputemail(){
+				var userem=document.getElementById('email').value;
+                var onlyemail=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+                if (!(userem.match(onlyemail))) {
+                     document.getElementById('Email').innerHTML="enter valid email id...";
+                }
+                else{
+                	document.getElementById('Email').innerHTML="";
+                }
+               }
+
+
+
+                function inputpassword(){
+				var userpass=document.getElementById('password').value;
+                var onlypassword=/^([a-zA-Z]+\s)*[a-zA-Z]+$/;
+
+                if (!(userpass.match(onlypassword))) {
+                     document.getElementById('pass').innerHTML="enter a strong password...";
+                }
+                else{
+                	document.getElementById('pass').innerHTML="";
+                }
+               }
+
+
+              
+              	function inputmobile(){
+				var usermob=document.getElementById('mobile').value;
+                var onlynumber=/\A[0-9]{10}\z/;
+
+                if (!(usermob.match(onlynumber))) {
+                     document.getElementById('Mobile').innerHTML="enter only 10 digit number..";
+                }
+                else{
+                	
+                	document.getElementById('Mobile').innerHTML="";
+                }
+               } 
+
+        
+
+
+			
+		</script>
+		
+</body>
+</html>
